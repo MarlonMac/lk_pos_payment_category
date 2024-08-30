@@ -15,6 +15,7 @@
         'views/lk_pos_payment_category_view_tree.xml',
         'views/lk_pos_payment_category_view_form.xml',
         'views/pos_config_view_form.xml'
+        'views/pos_payment_method_view_form.xml'
     ],
     'qweb': [
         'static/src/xml/pos.xml'
