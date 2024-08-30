@@ -1,1 +1,2 @@
-from . import pos_payment_group
+from . import pos_config
+from . import lk_pos_payment_category

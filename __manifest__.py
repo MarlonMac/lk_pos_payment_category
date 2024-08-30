@@ -1,5 +1,5 @@
 {
-    'name': "PW POS Payment Category",
+    'name': "LK POS Payment Category",
     'summary': """
         Categorías de pago en el punto de venta""",
     'description': """
