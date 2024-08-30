@@ -3,9 +3,9 @@
     <record id="res_config_settings_view_form" model="ir.ui.view">
         <field name="name">res.config.settings.view.form.inherit.pos_payment_category</field> 
         <field name="model">res.config.settings</field>
-        <field name="inherit_id" ref="pos_hr.res_config_settings_view_form"/> 
+        <field name="inherit_id" ref="point_of_sale.pos_config_view_form"/> 
         <field name="arch" type="xml">
-            <div id="pos_interface_section" position="after"> 
+            <xpath expr="//div[hasclass('settings')]" position="inside"> 
                 <div class="app_settings_block" data-string="Categorías de pago" data-key="payment_categories" groups="base.group_no_one">
                     <h2>Categorías de pago</h2>
                     <div class="row">
@@ -22,7 +22,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </xpath>
         </field>
     </record>
 </odoo>
