@@ -6,7 +6,7 @@ odoo.define('lk_pos_payment_category.payment_screen', function (require) {
     const { useListener } = require('web.custom_hooks');
     const rpc = require('web.rpc');
 
-    const PwPosPaymentCategoryPaymentScreen = (PaymentScreen) =>
+    const LkPosPaymentCategoryPaymentScreen = (PaymentScreen) =>
         class extends PaymentScreen {
             constructor() {
                 super(...arguments);
@@ -45,7 +45,7 @@ odoo.define('lk_pos_payment_category.payment_screen', function (require) {
             }
         };
 
-    Registries.Component.extend(PaymentScreen, PwPosPaymentCategoryPaymentScreen);
+    Registries.Component.extend(PaymentScreen, LkPosPaymentCategoryPaymentScreen);
 
     return PaymentScreen;
 });

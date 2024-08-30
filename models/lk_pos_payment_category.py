@@ -1,7 +1,7 @@
 from odoo import fields, models, api
 
 
-class PwPosPaymentCategory(models.Model):
+class LkPosPaymentCategory(models.Model):
     _name = 'lk.pos.payment.category'
     _description = 'Categorías de pago para el punto de venta'
     _order = 'sequence'
