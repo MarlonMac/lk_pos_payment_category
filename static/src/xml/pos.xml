@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+
+    <t t-extend="PaymentScreen">
+        <t t-jquery=".paymentmethods-container" t-operation="replace">
+            <div class="paymentmethods-container">
+                <div class="payment-left">
+                    <div class="payment-category-container">
+                        <t t-foreach="widget.paymentCategories" t-as="category">
+                            <div class="payment-category" t-att-data-category-id="category.id"
+                                 t-att-class="category.id === widget.state.selectedCategoryId ? 'selected' : ''">
+                                <div class="payment-category-title">
+                                    <t t-esc="category.name"/>
+                                </div>
+                            </div>
+                        </t>
+                    </div>
+                    <div class="paymentmethods">
+                        <t t-foreach="widget.filteredPaymentMethods" t-as="paymentMethod">
+                            <div class="paymentmethod" t-att-class="paymentMethod.selected ? 'selected' : ''"
+                                 t-on-click="widget.click_paymentmethod" t-att-data-id="paymentMethod.id">
+                                <div class="paymentmethod-image">
+                                    <img t-att-src="widget.payment_icon_url(paymentMethod.id)"
+                                         style="width: 100%; height: auto;"/>
+                                </div>
+                                <div class="paymentmethod-name">
+                                    <t t-esc="paymentMethod.name"/>
+                                </div>
+                            </div>
+                        </t>
+                    </div>
+                </div>
+                <div class="payment-right">
+                    <div class="paymentline">
+                        <span class="pay-circle">1</span>
+                        <span class="payment-name">Total</span>
+                        <span class="payment-due">
+                            <t t-esc="widget.format_currency_no_symbol(order.get_due())"/>
+                        </span>
+                    </div>
+                    <div class="paymentlines-empty" t-if="!paymentlines.length">
+                        <span>No hay líneas de pago</span>
+                    </div>
+                    <t t-foreach="paymentlines" t-as="line">
+                        <div class="paymentline">
+                            <span class="pay-circle">
+                                <t t-esc="line.cid"/>
+                            </span>
+                            <span class="payment-name">
+                                <t t-esc="line.name"/>
+                            </span>
+                            <span class="payment-amount">
+                                <t t-esc="widget.format_currency_no_symbol(line.get_amount())"/>
+                                <i class="fa fa-trash oe_link" style="color: rgb(155, 155, 155);"
+                                   t-on-click="widget.delete_paymentline" t-att-data-cid="line.cid"/>
+                            </span>
+                        </div>
+                    </t>
+                    <div class="payment-status" t-att-class="{ paid: order.is_paid(), 'not-paid': !order.is_paid() }">
+                        <t t-if="order.is_paid()">Pago completo</t>
+                        <t t-if="!order.is_paid()">
+                            <t t-if="order.get_change()">Cambio:
+                                <t t-esc="widget.format_currency_no_symbol(order.get_change())"/>
+                            </t>
+                            <t t-if="!order.get_change()">Monto a pagar:
+                                <t t-esc="widget.format_currency_no_symbol(order.get_due())"/>
+                            </t>
+                        </t>
+                    </div>
+                    <div class="payment-buttons" t-att-class="{oe_hidden: widget.finalized}">
+                        <div class="control-button">
+                            <button class="button validate" t-on-click="widget.validate_order">Validar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </t>
+    </t>
+
+</templates>

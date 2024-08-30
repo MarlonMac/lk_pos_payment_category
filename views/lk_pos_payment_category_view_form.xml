@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="lk_pos_payment_category_view_form" model="ir.ui.view">
+        <field name="name">lk.pos.payment.category.form</field>
+        <field name="model">lk.pos.payment.category</field>
+        <field name="arch" type="xml">
+            <form string="Categoría de pago">
+                <sheet>
+                    <div class="row mt16 o_group_col_full" name="group_top">
+                        <div class="col-xs-12 col-md-6 o_setting_box" title="¿Cómo funciona?">
+                            <div class="o_setting_left_pane">
+                                <field name="sequence"/>
+                            </div>
+                            <div class="o_setting_right_pane">
+                                <label for="sequence" class="o_form_label"/>
+                                <div class="text-muted">
+                                    Define el orden en que se mostrarán las categorías de pago
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-md-6 o_setting_box" title="Notas">
+                            <div class="o_setting_left_pane"/>
+                            <div class="o_setting_right_pane">
+                                <span class="text-muted">
+                                    * Las categorías se mostrarán en el PDV en el orden especificado por la secuencia
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="name"/>
+                            <field name="active"/>
+                        </group>
+                    </group>
+                    <t t-name="button_to_pos_config" t-call="web.action_button">
+                        <t t-set="action_id" t-value="action_pos_config_kanban"/>
+                        <t t-set="icon" t-value="'fa-th-large'"/>
+                    </t>
+                </sheet>
+            </form>
+        </field>
+    </record>
+</odoo>
