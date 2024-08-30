@@ -1,5 +1,5 @@
 {
-    'name': "LK POS Payment Category",
+    'name': "POS Payment Category",
     'summary': """
         Categorías de pago en el punto de venta""",
     'description': """
@@ -12,8 +12,8 @@
     'depends': ['base', 'point_of_sale'],
     'data': [
         'security/ir.model.access.csv',
-        'views/pw_pos_payment_category_view_tree.xml',
-        'views/pw_pos_payment_category_view_form.xml',
+        'views/lk_pos_payment_category_view_tree.xml',
+        'views/lk_pos_payment_category_view_form.xml',
         'views/pos_config_view_form.xml'
     ],
     'qweb': [
